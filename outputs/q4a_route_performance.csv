@@ -1,0 +1,15 @@
+route,3pl_name,avg_delivery_leadtime_hours,avg_estimated_shipping_fee
+Cross region,Shipping Carrier A,52.98,1883.38
+Cross region,Shipping Carrier B,55.55,1897.09
+Cross region,Shipping Carrier C,61.49,1869.97
+Cross region,Shipping Carrier E,84.95,1875.44
+Intra city,Shipping Carrier A,23.45,1775.76
+Intra city,Shipping Carrier B,22.02,1775.34
+Intra city,Shipping Carrier C,26.5,1767.15
+Intra city,Shipping Carrier D,21.83,1760.85
+Intra city,Shipping Carrier E,32.94,1825.54
+Special same region,Shipping Carrier A,47.65,1921.16
+Special same region,Shipping Carrier B,59.92,1886.8
+Special same region,Shipping Carrier C,65.92,1908.25
+Special same region,Shipping Carrier D,22.53,2020.86
+Special same region,Shipping Carrier E,92.34,1919.68

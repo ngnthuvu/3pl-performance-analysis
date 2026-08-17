@@ -1,0 +1,6 @@
+3pl_name,eligible_pickup_orders,ontime_pickup_orders,pickup_ontime_rate_pct,eligible_delivery_orders,ontime_delivery_orders,delivery_ontime_rate_pct,eligible_return_orders,ontime_return_orders,return_ontime_rate_pct
+Shipping Carrier A,24218,21782,89.94,29210,25657,87.84,788,567,71.95
+Shipping Carrier B,23960,21431,89.44,24995,22549,90.21,0,0,
+Shipping Carrier C,26968,24331,90.22,30997,24778,79.94,0,0,
+Shipping Carrier D,5608,5311,94.7,5511,4210,76.39,97,22,22.68
+Shipping Carrier E,3309,3034,91.69,4390,3428,78.09,0,0,
