@@ -1,94 +1,155 @@
-# 📦 3PL Performance Analysis Data Pipeline (E13)
+# 3PL Performance Analysis
 
-<div align="center">
-  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
-  <img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white" />
-  <img src="https://img.shields.io/badge/Excel-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white" />
-  <img src="https://img.shields.io/badge/Google_BigQuery-669DF6?style=for-the-badge&logo=google-cloud&logoColor=white" />
-</div>
+A three-layer analytics project evaluating third-party logistics (3PL) performance across pickup, delivery, return, cost, lead time, and route-level reliability.
 
-## 📖 Introduction
-This project is Exercise 1.3 (E13) from the **Foundation of Supply Chain Analytics** course, mentored by [Trần Viết Thanh](https://www.linkedin.com/in/thanhtranviet248/).
-The goal of the project is to build a multi-layer Data Pipeline to analyze the operational performance of delivery partners (3PL - Third-Party Logistics).
+The same business logic is implemented independently in:
 
-The dataset contains about 96,000 orders with detailed information such as order code, 3PL partner (5 carriers: A-E), seller/buyer area, transit time, weight, etc. Through this project, I demonstrate my data analysis skill development from manual methods (Excel) to automation (Python) and soon to cloud storage (BigQuery) and visualization (BI Tools).
+1. **Excel** — business-rule exploration and validation
+2. **Python** — reproducible automation
+3. **BigQuery** — scalable relational analytics
 
-## 📑 Table of Contents
-- [Project Structure](#-project-structure)
-- [Layer 1: Excel (Manual Analysis)](#-layer-1-excel-manual-analysis)
-- [Layer 2: Python / Pandas (Automation)](#-layer-2-python--pandas-automation)
-- [Layer 3 & 4: BigQuery & Dashboard (Coming Soon)](#-layer-3--4-bigquery--dashboard-coming-soon)
-- [Results & Insights](#-results--insights)
-- [Lessons Learned](#-lessons-learned)
-- [Technologies Used](#-technologies-used)
-
-## 🗂️ Project Structure
-```text
-📦 E13-3PL-Performance-Analysis
- ┣ 📂 docs/
- ┃   ┣ 📄 tang1_excel_analysis.md    # Detailed documentation for Layer 1 (Excel)
- ┃   ┗ 📄 tang2_python_automation.md # Detailed documentation for Layer 2 (Python)
- ┣ 📜 e13_pipeline_demo.py            # Python pipeline script (demo version)
- ┣ 📊 e13_question_1.csv            # Area & Route & Fee lookup table
- ┣ 📊 e13_question_2.csv            # SLA lookup table
- ┣ 📊 e13_question_3.csv            # Q3 questions table
- ┣ 📊 e13_question_4.csv            # Q4 questions table
- ┣ 🖼️ Bieu_do_Q4_Python.png         # Visualization chart using Matplotlib
- ┣ 📜 .gitignore
- ┗ 📜 README.md
-```
-
-> **Note:** Large data files (`.xlsx`, `ket_qua_bai_tap_e13.csv`) are not uploaded to GitHub due to size limits. See `.gitignore` for details.
-
-📖 **Detailed Documentation:**
-- [Layer 1: Data Analysis with Excel](docs/tang1_excel_analysis.md)
-- [Layer 2: Automation with Python / Pandas](docs/tang2_python_automation.md)
-
-## 📊 Layer 1: Excel (Manual Analysis)
-In the initial phase, I approached the data and solved the problem using manual methods in Excel to fully understand the business logic.
-
-- **Techniques used:** `INDEX-MATCH`, `IFS`, `AVERAGEIFS`, `VLOOKUP`, `Pivot Tables`.
-- **Completed tasks:**
-  - **Q1:** Mapping seller and buyer areas, categorizing as Urban/Rural based on the lookup table.
-  - **Q2:** Calculating Shipping Fee based on weight ranges and routes; determining the Service Level Agreement (SLA) for delivery/return.
-  - **Q3:** Calculating Actual Leadtime (`delivery_done` - `pickup_done`) and comparing it with SLA to evaluate the status as Ontime or Late.
-  - **Q4:** Creating Pivot Table reports summarizing Average Leadtime, Average Fee, and Percentage of Late Delivery (% Late Delivery) by Route and 3PL partner.
-
-## 🐍 Layer 2: Python / Pandas (Automation)
-After fully grasping the logic in Layer 1, I proceeded to automate the entire data processing workflow using Python, optimizing time and avoiding manual errors.
-
-- **Script file:** `e13_pipeline_demo.py` (demo version — full source available upon request)
-- **Techniques and libraries:**
-  - `pd.merge()`: Replaced `VLOOKUP` and `INDEX-MATCH`.
-  - `np.where()`: Replaced conditional functions like `IF`/`IFS`.
-  - `df.groupby()`: Replaced `Pivot Tables` for data aggregation.
-  - Date handling: Used `pd.to_datetime()` with the parameter `origin='1899-12-30'` to decode Excel's serial date format.
-  - `matplotlib`: Data visualization (exported to `Bieu_do_Q4_Python.png`).
-
-## 🚀 Layer 3 & 4: BigQuery & Dashboard (Coming Soon)
-- **Layer 3: Google BigQuery / SQL (Cloud Data Warehouse):** Moving data to a Cloud environment, using SQL to optimize queries for large datasets.
-- **Layer 4: Dashboard / BI Tools (Visualization):** Building automated reports (Power BI / Looker Studio) to provide an intuitive and continuous view for management.
-
-## 📈 Results & Insights
-The output data `ket_qua_bai_tap_e13.csv` has been cleaned and fully enriched with information fields (Shipping Fee, SLA, Leadtime, Ontime/Late status).
-
-The chart below provides a clear view of late delivery rates by route for Shipping Carrier A, helping the business make decisions on optimizing order allocation to the carriers with the lowest late delivery rate and most effective cost.
-
-<div align="center">
-  <img src="Bieu_do_Q4_Python.png" alt="% Late Delivery by Route - Shipping Carrier A" width="700"/>
-</div>
-
-## 💡 Lessons Learned
-The transition from Excel to Python helped me discover and handle several Data Quality issues that Excel often overlooks:
-
-1. **Excel Date Format Issues:** Dates in Excel are actually serial numbers. When reading data with Python, I had to handle this carefully by using `origin='1899-12-30'` for accurate conversion.
-2. **Trailing Spaces:** City/province names containing invisible trailing spaces silently caused Excel's lookup functions to fail (returning N/A), but Python helped detect and clean them (`.str.strip()`) easily.
-3. **Missing Values:** For orders without weight information, Excel automatically interprets them as `0` - leading to incorrect shipping fees. Python handles them more accurately by keeping them as `NaN`, allowing me to apply reasonable imputation strategies or drop them if necessary.
-
-## 🛠️ Technologies Used
-- **Data Analysis:** Microsoft Excel, Python (Pandas, NumPy)
-- **Visualization:** Matplotlib
-- **IDE / Tools:** VS Code, Jupyter Notebook
+The purpose is not to chain Excel → Python → BigQuery as technical dependencies. Instead, each layer reproduces the same analytical model from the source data and reference rules, allowing the outputs to be reconciled across tools.
 
 ---
-*This project is a testament to my mindset shift from a "Data Analyst using out-of-the-box tools" to a "Data Engineer automating analytics systems".*
+
+## Business Questions
+
+The analysis addresses four main questions:
+
+- **Q1 — Order enrichment:** determine Seller/Buyer Area, Urban/Rural classification, route, and estimated shipping fee.
+- **Q2 — SLA performance:** derive delivery/return SLA, lead time, data-quality flags, and Ontime/Late status.
+- **Q3 — Carrier performance:** compare pickup, delivery, and return on-time rates across 3PL providers.
+- **Q4 — Route performance:** compare cost, delivery lead time, and late-delivery rates by Route × 3PL.
+
+---
+
+## Architecture
+
+```text
+                           ┌── Excel
+Raw orders + references ───┼── Python
+                           └── BigQuery
+                                │
+                                ▼
+                       Reconciled outputs
+```
+
+### Shared business rules
+
+- Seller is the **FROM** side of a delivery route.
+- Buyer is the **TO** side.
+- Delivery SLA direction: **Seller → Buyer**.
+- Return SLA direction: **Buyer → Seller**.
+- If both Seller and Buyer are Urban, use the Urban SLA; otherwise use the Rural SLA.
+- Delivery lead time = `delivery_done - pickup_done`, in hours.
+- Return lead time = `returned - return_initiated`, in hours.
+- Pickup performance excludes non-eligible observations such as Dropoff shipments.
+- Performance rates use **eligible observations as the denominator**, not all orders.
+
+---
+
+## Repository Structure
+
+```text
+3pl-performance-analysis/
+├── README.md
+├── docs/
+│   ├── tier1_excel_analysis.md
+│   ├── tier2_python_automation.md
+│   └── tier3_bigquery.md
+├── src/
+│   └── e13_pipeline_demo.py
+├── sql/
+│   └── bigquery_demo.sql
+├── outputs/
+│   ├── q3_3pl_performance.csv
+│   ├── q4a_route_performance.csv
+│   └── q4b_late_delivery.csv
+├── assets/
+│   └── q4b_late_delivery_rate.svg
+├── requirements.txt
+└── .gitignore
+```
+
+The detailed production-style transformation code is intentionally kept private. Public files demonstrate the analytical approach and validated outputs without exposing the full implementation.
+
+---
+
+## Validated Results
+
+### Q3 — 3PL On-time Performance
+
+| Carrier | Pickup Ontime | Delivery Ontime | Return Ontime |
+|---|---:|---:|---:|
+| Shipping Carrier A | 89.94% | 87.84% | 71.95% |
+| Shipping Carrier B | 89.44% | 90.21% | — |
+| Shipping Carrier C | 90.22% | 79.94% | — |
+| Shipping Carrier D | 94.70% | 76.39% | 22.68% |
+| Shipping Carrier E | 91.69% | 78.09% | — |
+
+A missing return rate means the carrier had no eligible return observations; it does **not** mean 0%.
+
+### Q4 — Main route-level findings
+
+- **Cross region:** Carrier A offers the strongest overall trade-off between speed and reliability at only a small cost premium.
+- **Intra city:** Carrier B is more balanced than Carrier D; their speed and cost are similar, while Carrier B has much stronger SLA reliability.
+- **Special same region:** Carrier D is the strongest premium option, combining the fastest delivery lead time with the lowest late-delivery rate despite a higher average fee.
+- Carrier selection should therefore be **route-specific**, using cost, speed, and reliability together rather than relying on a single overall ranking.
+
+![Late Delivery Rate by Route and 3PL](assets/q4b_late_delivery_rate.svg)
+
+---
+
+## Cross-layer Validation
+
+The final Excel, Python, and BigQuery implementations were reconciled against the same expected outputs.
+
+Examples:
+
+| Metric | Validated Result |
+|---|---:|
+| Carrier A pickup on-time rate | 89.94% |
+| Carrier A delivery on-time rate | 87.84% |
+| Carrier A return on-time rate | 71.95% |
+| Carrier D return on-time rate | 22.68% |
+| Cross region / Carrier A late rate | 8.26% |
+| Intra city / Carrier B late rate | 11.72% |
+| Special same region / Carrier D late rate | 4.44% |
+
+This cross-tool reconciliation is used as a data-quality control rather than assuming that one implementation is automatically correct.
+
+---
+
+## Data-quality Debugging Example
+
+During BigQuery implementation, route-level late-delivery rates were initially much higher than the validated Excel/Python results.
+
+The issue was traced through:
+
+```text
+Q4b mismatch
+→ check average delivery lead time
+→ lead time too high by ~15–16 hours
+→ inspect timestamp distribution
+→ 100% of pickup_done values were at 00:00:00
+→ raw CSV export had lost the pickup time component
+→ preserve full datetime in source CSV
+→ rerun pipeline
+→ BigQuery matched Excel/Python
+```
+
+This illustrates why warehouse validation should include both final KPI reconciliation and intermediate data-quality checks.
+
+---
+
+## Tools
+
+- Microsoft Excel / Power Query / PivotTable / Data Model
+- Python / pandas / matplotlib
+- Google BigQuery / GoogleSQL
+
+---
+
+## Notes
+
+Raw source data, detailed transformation logic, and private implementation files are excluded from the public repository.
