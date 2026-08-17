@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="560" viewBox="0 0 1000 560">
+<rect width="100%" height="100%" fill="white"/>
+<style>text{font-family:Arial,sans-serif;fill:#222}.t{font-size:24px;font-weight:700}.a{font-size:13px}.v{font-size:11px}</style>
+<text x="500" y="34" text-anchor="middle" class="t">Late Delivery Rate by Route and 3PL</text>
+<line x1="70" y1="460" x2="950" y2="460" stroke="#333"/><line x1="70" y1="70" x2="70" y2="460" stroke="#333"/>
+<g stroke="#ddd"><line x1="70" y1="404" x2="950" y2="404"/><line x1="70" y1="349" x2="950" y2="349"/><line x1="70" y1="293" x2="950" y2="293"/><line x1="70" y1="237" x2="950" y2="237"/><line x1="70" y1="181" x2="950" y2="181"/><line x1="70" y1="126" x2="950" y2="126"/><line x1="70" y1="70" x2="950" y2="70"/></g>
+<g class="a" text-anchor="end"><text x="62" y="464">0%</text><text x="62" y="408">10%</text><text x="62" y="353">20%</text><text x="62" y="297">30%</text><text x="62" y="241">40%</text><text x="62" y="185">50%</text><text x="62" y="130">60%</text><text x="62" y="74">70%</text></g>
+<!-- Cross region: A 8.26, B 9.77, C 15.32, D n/a, E 30.06 -->
+<rect x="140" y="414" width="24" height="46" fill="#4e79a7"/><rect x="170" y="406" width="24" height="54" fill="#f28e2b"/><rect x="200" y="375" width="24" height="85" fill="#e15759"/><rect x="230" y="458" width="24" height="2" fill="#bbb"/><rect x="260" y="293" width="24" height="167" fill="#59a14f"/>
+<text x="212" y="486" text-anchor="middle" class="a">Cross region</text>
+<!-- Intra city: A 16.61 B 11.72 C 26.04 D 26.39 E 23.06 -->
+<rect x="430" y="367" width="24" height="93" fill="#4e79a7"/><rect x="460" y="395" width="24" height="65" fill="#f28e2b"/><rect x="490" y="315" width="24" height="145" fill="#e15759"/><rect x="520" y="313" width="24" height="147" fill="#76b7b2"/><rect x="550" y="332" width="24" height="128" fill="#59a14f"/>
+<text x="502" y="486" text-anchor="middle" class="a">Intra city</text>
+<!-- Special same region: A 14.11 B 15.28 C 27.91 D 4.44 E 62.37 -->
+<rect x="720" y="381" width="24" height="79" fill="#4e79a7"/><rect x="750" y="375" width="24" height="85" fill="#f28e2b"/><rect x="780" y="304" width="24" height="156" fill="#e15759"/><rect x="810" y="435" width="24" height="25" fill="#76b7b2"/><rect x="840" y="112" width="24" height="348" fill="#59a14f"/>
+<text x="792" y="486" text-anchor="middle" class="a">Special same region</text>
+<g class="a"><rect x="265" y="520" width="14" height="14" fill="#4e79a7"/><text x="285" y="532">Carrier A</text><rect x="380" y="520" width="14" height="14" fill="#f28e2b"/><text x="400" y="532">Carrier B</text><rect x="495" y="520" width="14" height="14" fill="#e15759"/><text x="515" y="532">Carrier C</text><rect x="610" y="520" width="14" height="14" fill="#76b7b2"/><text x="630" y="532">Carrier D</text><rect x="725" y="520" width="14" height="14" fill="#59a14f"/><text x="745" y="532">Carrier E</text></g>
+</svg>
