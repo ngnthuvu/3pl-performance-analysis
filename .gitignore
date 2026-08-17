@@ -1,53 +1,23 @@
-# Python cache files
+# Raw / private data
+data/
+raw/
+*.xlsx
+*.xls
+enriched_orders.csv
+
+# Private implementation
+*_private.py
+*_private.sql
+private/
+
+# Python
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
-
-# Virtual environments
-venv/
+*.py[cod]
 .venv/
-env/
+venv/
 
-# IDE settings
+# OS / editor
+.DS_Store
+Thumbs.db
 .vscode/
 .idea/
-
-# OS files
-Thumbs.db
-.DS_Store
-
-# Temporary files
-*.tmp
-~$*
-
-# Original Excel files (too large, should not be tracked by git)
-e13_exercise.xlsx
-e13_exercise (ver2).xlsx
-
-# Large CSV output files
-ket_qua_bai_tap_e13.csv
-ket_qua_bai_tap_e13.xlsx
-e13_raw_data.csv
-e13_raw_data_utf8.csv
-
-# Course materials not to be shared externally
-Foundation of SCA - Syllabus.docx
-SCA_Slide.pdf
-context và thông tin khóa học.txt
-
-# Test/scratch files
-e13_test_utf8.csv
-e13_solution.py
-e13_solution_v2.py
-
-# Full source code (private — demo version is tracked instead)
-bai_tap_e13.py
-
-# Directories of other exercises
-e12_exercise/
-
-# Note: 
-# Keep tracked files: 
-# - bai_tap_e13.py, Bieu_do_Q4_Python.png, README.md, .gitignore, and markdown files (docs/).
-# - Small CSV files used for reference (e13_question_1.csv, e13_question_2.csv, e13_question_3.csv, e13_question_4.csv).
