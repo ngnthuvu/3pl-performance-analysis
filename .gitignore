@@ -1,0 +1,23 @@
+# Raw / private data
+data/
+raw/
+*.xlsx
+*.xls
+enriched_orders.csv
+
+# Private implementation
+*_private.py
+*_private.sql
+private/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

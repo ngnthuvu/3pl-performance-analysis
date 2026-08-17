@@ -1,0 +1,15 @@
+route,3pl_name,eligible_delivery_orders,late_delivery_orders,late_delivery_rate_pct
+Cross region,Shipping Carrier A,3572,295,8.26
+Cross region,Shipping Carrier B,2640,258,9.77
+Cross region,Shipping Carrier C,3499,536,15.32
+Cross region,Shipping Carrier E,529,159,30.06
+Intra city,Shipping Carrier A,15513,2576,16.61
+Intra city,Shipping Carrier B,10490,1229,11.72
+Intra city,Shipping Carrier C,18427,4798,26.04
+Intra city,Shipping Carrier D,4813,1270,26.39
+Intra city,Shipping Carrier E,2472,570,23.06
+Special same region,Shipping Carrier A,2531,357,14.11
+Special same region,Shipping Carrier B,2363,361,15.28
+Special same region,Shipping Carrier C,1501,419,27.91
+Special same region,Shipping Carrier D,698,31,4.44
+Special same region,Shipping Carrier E,93,58,62.37
